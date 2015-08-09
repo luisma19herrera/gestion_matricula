@@ -1,0 +1,69 @@
+<%= form_for(@estudiante) do |f| %>
+  <% if @estudiante.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estudiante.errors.count, "error") %> prohibited this estudiante from being saved:</h2>
+
+      <ul>
+      <% @estudiante.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :apellidos %><br>
+    <%= f.text_field :apellidos %>
+  </div>
+  <div class="field">
+    <%= f.label :edad %><br>
+    <%= f.number_field :edad %>
+  </div>
+  <div class="field">
+    <%= f.label :doc_identidad %><br>
+    <%= f.text_field :doc_identidad %>
+  </div>
+  <div class="field">
+    <%= f.label :lugar_expedicion %><br>
+    <%= f.text_field :lugar_expedicion %>
+  </div>
+  <div class="field">
+    <%= f.label :grado %><br>
+    <%= f.number_field :grado %>
+  </div>
+  <div class="field">
+    <%= f.label :f_nacimiento %><br>
+    <%= f.date_select :f_nacimiento %>
+  </div>
+  <div class="field">
+    <%= f.label :institucion_anterior %><br>
+    <%= f.text_field :institucion_anterior %>
+  </div>
+  <div class="field">
+    <%= f.label :grado_aspirado %><br>
+    <%= f.number_field :grado_aspirado %>
+  </div>
+  <!--<div class="field">
+    <%= f.label :estado %><br>
+    <%= f.text_field :estado %>
+  </div>-->
+  <!--<div class="field">
+    <%= f.label :acudiente_id %><br>
+    <%= f.number_field :acudiente_id %>
+  </div>-->
+  <!--<div class="field">
+    <%= f.label :f_examen %><br>
+    <%= f.date_select :f_examen %>
+  </div>
+  <div class="field">
+    <%= f.label :f_matricula %><br>
+    <%= f.date_select :f_matricula %>
+  </div>-->
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

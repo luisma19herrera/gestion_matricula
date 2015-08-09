@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Estudiantes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellidos</th>
+      <th>Edad</th>
+      <th>Doc identidad</th>
+      <th>Lugar expedicion</th>
+      <th>Grado</th>
+      <th>F nacimiento</th>
+      <th>Institucion anterior</th>
+      <th>Grado aspirado</th>
+      <th>Estado</th>
+      <th>Acudiente</th>
+      <th>F examen</th>
+      <th>F matricula</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+ 
+ 
+  <tbody>
+    <% @estudiantes.each do |estudiante| %>
+    <% if estudiante.acudiente.id = current_acudiente.id %>
+    <% nombre = "#{estudiante.acudiente.nombre} #{estudiante.acudiente.apellidos}" %>
+      <tr>
+        <td><%= estudiante.nombre %></td>
+        <td><%= estudiante.apellidos %></td>
+        <td><%= estudiante.edad %></td>
+        <td><%= estudiante.doc_identidad %></td>
+        <td><%= estudiante.lugar_expedicion %></td>
+        <td><%= estudiante.grado %></td>
+        <td><%= estudiante.f_nacimiento %></td>
+        <td><%= estudiante.institucion_anterior %></td>
+        <td><%= estudiante.grado_aspirado %></td>
+        <td><%= estudiante.estado %></td>
+        <td><%= nombre%></td>
+        <td><%= estudiante.f_examen %></td>
+        <td><%= estudiante.f_matricula %></td>
+        <td><%= link_to 'Show', estudiante %></td>
+        <td><%= link_to 'Edit', edit_estudiante_path(estudiante) %></td>
+        <td><%= link_to 'Destroy', estudiante, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Estudiante', new_estudiante_path %>

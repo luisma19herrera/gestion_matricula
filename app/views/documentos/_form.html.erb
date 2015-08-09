@@ -1,0 +1,39 @@
+<%= form_for @documento, :html => {:multipart => true} do |f| %>
+  <% if @documento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@documento.errors.count, "error") %> prohibited this documento from being saved:</h2>
+
+      <ul>
+      <% @documento.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tipo_documento %><br>
+    <%= f.text_field :tipo_documento %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha_ingreso %><br>
+    <%= f.date_select :fecha_ingreso %>
+  </div>
+  <div class="field">
+    <%= f.label :observacion %><br>
+    <%= f.text_area :observacion %>
+  </div>
+  <div class="field">
+    <%= f.label :estudiante_id %><br>
+    <%= f.number_field :estudiante_id %>
+  </div>
+   <li>
+      <%= f.label :adjunto, "Adjunto" %>
+      <%= f.file_field :adjunto %>
+    <li>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+

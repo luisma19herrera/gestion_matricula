@@ -1,0 +1,167 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @estudiante.nombre %>
+</p>
+
+<p>
+  <strong>Apellidos:</strong>
+  <%= @estudiante.apellidos %>
+</p>
+
+<p>
+  <strong>Edad:</strong>
+  <%= @estudiante.edad %>
+</p>
+
+<p>
+  <strong>Doc identidad:</strong>
+  <%= @estudiante.doc_identidad %>
+</p>
+
+<p>
+  <strong>Lugar expedicion:</strong>
+  <%= @estudiante.lugar_expedicion %>
+</p>
+
+<p>
+  <strong>Grado:</strong>
+  <%= @estudiante.grado %>
+</p>
+
+<p>
+  <strong>F nacimiento:</strong>
+  <%= @estudiante.f_nacimiento %>
+</p>
+
+<p>
+  <strong>Institucion anterior:</strong>
+  <%= @estudiante.institucion_anterior %>
+</p>
+
+<p>
+  <strong>Grado aspirado:</strong>
+  <%= @estudiante.grado_aspirado %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @estudiante.estado %>
+</p>
+
+<p>
+  <strong>Acudiente:</strong>
+  <%= @estudiante.acudiente_id %>
+</p>
+
+<p>
+  <strong>F examen:</strong>
+  <%= @estudiante.f_examen %>
+</p>
+
+<p>
+  <strong>F matricula:</strong>
+  <%= @estudiante.f_matricula %>
+</p>
+
+<% @volante = Volante.new %>
+<% $id_estudiante = @estudiante.id %>
+<% @lista_volante = Volante.all %>
+
+
+<% if @estudiante.estado == "Aspirante" %>
+<%= form_for(@volante) do |f| %>
+  <% if @volante.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@volante.errors.count, "error") %> prohibited this volante from being saved:</h2>
+
+      <ul>
+      <% @volante.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %> 
+
+    <div class="field">
+      <%= f.hidden_field :concepto, value: "PAGO INSCRIPCION"%>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :valor, value: "10000"%>
+    </div>
+    <div class="actions">
+      <%= f.submit :Inscripcion%>
+    </div> 
+<% end %>
+
+<% else %>
+   <% @lista_volante.each do |volante| %>
+      <% if @estudiante.id == volante.estudiante.id && volante.estudiante.estado =="Pre Inscrito"%>
+        <% @volante = Volante.find(volante.id) %>
+        <%= form_for @volante, url: volante_path(volante.id), :html => {:multipart => true} do |f| %>
+          <% if @volante.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@volante.errors.count, "error") %> prohibited this volante from being saved:</h2>
+
+              <ul>
+              <% @volante.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %> 
+
+         <div class="field">
+              <%= f.hidden_field :id, value: volante.id%>
+          </div>
+          <div class="field">
+            <%= f.label :numero_comprobante %><br>
+            <%= f.text_field :numero_comprobante %>
+          </div>
+          <div class="field">
+              <%= f.label :soporte, "Adjunto" %>
+              <%= f.file_field :soporte %>
+          </div>
+          <div class="actions">
+            <%= f.submit :Aceptar%>
+          </div>     
+        <% end %>        
+      <% end %>
+   <% end %>   
+  <% end %>
+
+<% if @estudiante.estado == "Aprobado" %>
+  <%= form_for(@volante) do |f| %>
+    <% if @volante.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@volante.errors.count, "error") %> prohibited this volante from being saved:</h2>
+
+        <ul>
+        <% @volante.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.hidden_field :concepto, value: "PAGO MATRICULA"%>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :valor, value: "180000"%>
+    </div>
+    <div class="actions">
+      <%= f.submit :Matricula%>
+    </div>
+  <% end %>
+<% end %>
+
+ 
+
+
+
+
+<%= link_to 'Edit', edit_estudiante_path(@estudiante) %> |
+<%= link_to 'Add New', new_estudiante_path %>
+<%= link_to 'End', :controller => "home" %>

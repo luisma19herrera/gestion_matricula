@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Volantes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Concepto</th>
+      <th>Valor</th>
+      <th>F generacion</th>
+      <th>F ingreso</th>
+      <th>Numero comprobante</th>
+      <th>Estudiante</th>
+      <th>Soporte</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @volantes.each do |volante| %>
+      <tr>
+        <td><%= volante.concepto %></td>
+        <td><%= volante.valor %></td>
+        <td><%= volante.f_generacion %></td>
+        <td><%= volante.f_ingreso %></td>
+        <td><%= volante.numero_comprobante %></td>
+        <td><%= volante.estudiante_id %></td>
+        <td><%= link_to volante.soporte.name, volante.soporte.url %></td>
+        <td><%= link_to 'Show', volante %></td>
+        <td><%= link_to 'Edit', edit_volante_path(volante) %></td>
+        <td><%= link_to 'Destroy', volante, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Volante', new_volante_path %>

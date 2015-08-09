@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha: 2015-08-07
+  hora_inicio: 2015-08-07 18:39:21
+  hora_fin: 2015-08-07 18:39:21
+  tipo_tramite: MyString
+
+two:
+  fecha: 2015-08-07
+  hora_inicio: 2015-08-07 18:39:21
+  hora_fin: 2015-08-07 18:39:21
+  tipo_tramite: MyString

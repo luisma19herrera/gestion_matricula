@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @acudiente.nombre %>
+</p>
+
+<p>
+  <strong>Apellidos:</strong>
+  <%= @acudiente.apellidos %>
+</p>
+
+<p>
+  <strong>Identificacion:</strong>
+  <%= @acudiente.identificacion %>
+</p>
+
+<p>
+  <strong>Ocupacion:</strong>
+  <%= @acudiente.ocupacion %>
+</p>
+
+<p>
+  <strong>Cargo:</strong>
+  <%= @acudiente.cargo %>
+</p>
+
+<p>
+  <strong>Empresa:</strong>
+  <%= @acudiente.empresa %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @acudiente.direccion %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @acudiente.telefono %>
+</p>
+
+<p>
+  <strong>Celular:</strong>
+  <%= @acudiente.celular %>
+</p>
+
+<%= link_to 'Edit', edit_acudiente_path(@acudiente) %> |
+<%= link_to 'Back', acudientes_path %>

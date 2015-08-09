@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tipo_documento: MyString
+  fecha_ingreso: 2015-08-07
+  observacion: MyText
+  estudiante_id: 1
+
+two:
+  tipo_documento: MyString
+  fecha_ingreso: 2015-08-07
+  observacion: MyText
+  estudiante_id: 1

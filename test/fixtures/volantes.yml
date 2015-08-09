@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  concepto: MyString
+  valor: 1
+  f_generacion: 2015-08-07
+  f_ingreso: 2015-08-07
+  numero_comprobante: MyString
+  estudiante_id: 1
+
+two:
+  concepto: MyString
+  valor: 1
+  f_generacion: 2015-08-07
+  f_ingreso: 2015-08-07
+  numero_comprobante: MyString
+  estudiante_id: 1

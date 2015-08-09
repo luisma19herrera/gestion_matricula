@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GestionMatricula</title>
+  <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+   <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+     <!-- Favicon Icon -->
+    <link rel="icon" href="assets/img/logotop.png" />
+    <title>Coexco</title>
+    <!-- BOOTSTRAP CORE CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <%= stylesheet_link_tag "bootstrap" %>
+    <!-- ION ICONS STYLES -->
+    <link href="assets/css/ionicons.css" rel="stylesheet" />
+    <%= stylesheet_link_tag "ionicons" %>
+     <!-- FONT AWESOME ICONS STYLES -->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <%= stylesheet_link_tag "font-awesome" %>
+    <!-- CUSTOM CSS -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <%= stylesheet_link_tag "style" %>
+     <!-- IE10 viewport hack  -->
+    <script src="assets/js/ie-10-view-port.js"></script>
+</head>
+<body>
+
+	<!--<p class="notice"><%= notice %></p>
+   <p class="alert"><%= alert %></p>
+
+   <ul>
+   	
+       	
+   </ul>-->
+
+   <header id="header">
+        <div class="container" >
+                <div class="row"  >
+                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 logo-wrapper">
+                         
+                         <%= image_tag "logo.png", :alt => "Google +", :title => "Google +"%>
+                     </div>
+                                     
+                </div>
+                      
+                </div>
+              
+                
+            </div>
+   </header>
+
+   <nav class="navbar navbar-default">
+  <div class="container-fluid">
+   
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Inicio</a>
+    </div>
+
+   
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Nuestra Institución <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= link_to 'Mision y Vision', home_mision_vision_path%></li>
+            <li><%= link_to 'Galeria', home_galeria_path%></li>
+            <li><%= link_to 'Manual de Convivencia', home_manual_path%></li>
+            <li><%= link_to 'Contactenos', home_contactenos_path%></li>
+          </ul>
+        </li>
+      </ul>
+
+      <% if acudiente_signed_in? %>
+      <form id="signin" class="navbar-form navbar-right" role="form">
+        <%= link_to current_acudiente.nombre, edit_acudiente_registration_path %> 
+        <%= link_to 'Cerrar Sesion', destroy_acudiente_session_path, method: :delete %>   
+     </form>
+      
+    <% else %> 
+    <% @acudiente = Acudiente.new %>     
+    <%= form_for(@acudiente, as: @acudiente, url: session_path(@acudiente), :html => {:class => "navbar-form navbar-right"}) do |f| %>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>  
+        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder:"Email" %>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Contraseña" %>
+      </div>
+
+      
+
+      <div class="input-group">
+        <%= f.submit "Log in", :class => 'btn btn-primary' %>
+      </div>
+    <% end %>
+      <!--<form id="signin" class="navbar-form navbar-right" role="form">
+          <!--<div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input id="email" type="email" class="form-control" name="email" value="" placeholder="Usuario">                                        
+          </div>-->
+
+          <!--<div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <input id="password" type="password" class="form-control" name="password" value="" placeholder="Contraseña">                                        
+          </div>-->
+
+         <!-- <button type="submit" class="btn btn-primary">Login</button>
+          
+     </form>-->
+     
+
+      
+
+    <% end %>
+      
+     
+    </div>
+  </div>
+</nav>
+
+<%= yield %>
+
+<footer>
+        <div class="container">
+<div class="row text-center">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+                             &copy; wwww.coexco.com | by <a href="http://www.coexco.com/" target="_blank"> Cra 35B No 100-180 Telefono: 3808217 </a> 
+                         </div>
+
+    </div>
+            </div>
+    </footer>
+    <!-- FOOTER SECTION END-->
+
+    <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY  SCRIPTS -->
+    <script src="assets/js/jquery-1.11.1.js"></script>
+    <!-- BOOTSTRAP SCRIPTS  -->
+    <script src="assets/js/bootstrap.js"></script>
+    <!-- SCROLLING SCRIPTS PLUGIN  -->
+    <script src="assets/js/jquery.easing.min.js"></script>
+    <!-- CUSTOM SCRIPTS   -->
+    <script src="assets/js/custom.js"></script>
+
+</body>
+</html>

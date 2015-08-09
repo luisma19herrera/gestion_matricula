@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Concepto:</strong>
+  <%= @volante.concepto %>
+</p>
+
+<p>
+  <strong>Valor:</strong>
+  <%= @volante.valor %>
+</p>
+
+<p>
+  <strong>F generacion:</strong>
+  <%= @volante.f_generacion %>
+</p>
+
+<p>
+  <strong>F ingreso:</strong>
+  <%= @volante.f_ingreso %>
+</p>
+
+<p>
+  <strong>Numero comprobante:</strong>
+  <%= @volante.numero_comprobante %>
+</p>
+
+<p>
+  <strong>Estudiante:</strong>
+  <%= @volante.estudiante_id %>
+</p>
+
+<%= link_to 'Edit', edit_volante_path(@volante) %> |
+<%= link_to 'Back', volantes_path %>

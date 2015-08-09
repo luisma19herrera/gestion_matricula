@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tipo documento:</strong>
+  <%= @documento.tipo_documento %>
+</p>
+
+<p>
+  <strong>Fecha ingreso:</strong>
+  <%= @documento.fecha_ingreso %>
+</p>
+
+<p>
+  <strong>Observacion:</strong>
+  <%= @documento.observacion %>
+</p>
+
+<p>
+  <strong>Estudiante:</strong>
+  <%= @documento.estudiante_id %>
+</p>
+
+<%= link_to 'Edit', edit_documento_path(@documento) %> |
+<%= link_to 'Back', documentos_path %>

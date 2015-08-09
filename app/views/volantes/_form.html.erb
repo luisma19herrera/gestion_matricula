@@ -1,0 +1,45 @@
+<%= form_for @volante, :html => {:multipart => true} do |f| %>
+  <% if @volante.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@volante.errors.count, "error") %> prohibited this volante from being saved:</h2>
+
+      <ul>
+      <% @volante.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :concepto %><br>
+    <%= f.text_field :concepto %>
+  </div>
+  <div class="field">
+    <%= f.label :valor %><br>
+    <%= f.number_field :valor %>
+  </div>
+  <div class="field">
+    <%= f.label :f_generacion %><br>
+    <%= f.date_select :f_generacion %>
+  </div>
+  <div class="field">
+    <%= f.label :f_ingreso %><br>
+    <%= f.date_select :f_ingreso %>
+  </div>
+  <div class="field">
+    <%= f.label :numero_comprobante %><br>
+    <%= f.text_field :numero_comprobante %>
+  </div>
+  <div class="field">
+    <%= f.label :estudiante_id %><br>
+    <%= f.number_field :estudiante_id %>
+  </div>
+  <div class="field">
+            <%= f.label :soporte, "Adjunto" %>
+            <%= f.file_field :soporte %>
+        </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
