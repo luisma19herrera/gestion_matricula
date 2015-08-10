@@ -14,7 +14,7 @@ class VolantesController < ApplicationController
     respond_to do |format|
       format.pdf do
         render pdf: "file_name",   # Excluding ".pdf" extension.
-        layout: 'layouts/application.pdf.haml',  # layout used
+        layout: 'layouts/fpago.html.erb',  # layout used
         show_as_html: params[:debug].present?,
         target: "_blank"
       end

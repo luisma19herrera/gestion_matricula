@@ -1,62 +1,81 @@
  <div class="row">
-<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 logo-wrapper">
+<div class="col-lg-1 col-md-1 col-sm-12 col-xs-12 logo-wrapper">
      
      <%= image_tag "registrate.jpeg", :alt => "Registrate", :title => "Registrate"%>
   </div>
-<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 logo-wrapper">
-</div>
 
-
-
-<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 logo-wrapper">
+<div class="col-lg-11 col-md-11 col-sm-12 col-xs-12 logo-wrapper">
   <% @acudiente = Acudiente.new %>  
   <%= form_for(@acudiente, as: @acudiente, url: registration_path(@acudiente) , :html => {:class => "form-horizontal"}) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="form-group">
-    <%= f.label :nombre, class: "control-label col-xs-3" %><br>
-    <div class="col-xs-9">
+    <%= f.label :nombre, class: "control-label col-xs-5" %>
+    <div class="col-xs-7">
       <%= f.text_field :nombre, class: "form-control" %>
     </div>
   </div>
-  <div class="field">
-    <%= f.label :apellidos %><br>
-    <%= f.text_field :apellidos %>
+  <div class="form-group">
+    <%= f.label :apellidos, class: "control-label col-xs-5" %>
+    <div class="col-xs-7">
+      <%= f.text_field :apellidos, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :identificacion %><br>
-    <%= f.text_field :identificacion %>
+  <div class="form-group">
+    <%= f.label :identificacion, class: "control-label col-xs-5" %>
+    <div class="col-xs-7">
+    <%= f.text_field :identificacion, class: "form-control" %>
+    </div>
   </div>
   
-  <div class="field">
-    <%= f.label :telefono %><br>
-    <%= f.number_field :telefono %>
+  <div class="form-group">
+    <%= f.label :telefono, class: "control-label col-xs-5" %>
+    <div class="col-xs-7">
+    <%= f.number_field :telefono, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :celular %><br>
-    <%= f.number_field :celular %>
+  <div class="form-group">
+    <%= f.label :celular, class: "control-label col-xs-5" %>
+    <div class="col-xs-7">
+    <%= f.number_field :celular, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <div class="form-group">
+    <%= f.label :email, class: "control-label col-xs-5" %>
+    <div class="col-xs-7">
+    <%= f.email_field :email, autofocus: true, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
+  <div class="form-group">
+    <%= f.label :password, class: "control-label col-xs-5" %>
+    
+    <div class="col-xs-7">
+    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+    </div>
     <% if @validatable %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <div class="form-group">
+    <%= f.label :password_confirmation, class: "control-label col-xs-5" %>
+    <div class="col-xs-7">
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+<div class="form-group">
+        <div class="col-xs-offset-3 col-xs-9">
+            <label class="checkbox-inline">
+                <input type="checkbox" value="agree">  Accepto <a href="#">Terminos y condiciones</a>.
+            </label>
+        </div>
+    </div>
+  <div class="col-xs-offset-3 col-xs-9">
+    <%= f.submit "Sign up", class: "btn btn-primary" %>
+    <input type="reset" class="btn btn-default" value="Limpiar">
   </div>
 <% end %>
 

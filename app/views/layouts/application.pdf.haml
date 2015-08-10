@@ -1,9 +1,27 @@
-!!!
-%html
-  %head
-    %meta{charset: 'utf8'}
+<html>
 
-  %body
-    .container
-      %h1 Generate PDF example
-      = yield
+<head>
+
+ 
+
+ = wicked_pdf_stylesheet_link_tag "propiedades"
+
+  
+
+
+</head>
+
+
+
+
+<body class="volante">
+
+<%= yield%>
+
+
+  
+</body>
+
+
+
+</html>

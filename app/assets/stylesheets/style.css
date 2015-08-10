@@ -122,6 +122,38 @@ color: #D0D0D0;
     }
 
 /*================================
+  ESTUDIANTES SECTION STYLES
+==================================*/
+
+#estudiantes {
+     
+    padding: 0;
+    -webkit-background-size: cover;
+    background-size: cover;
+    -moz-background-size: cover;    
+}
+
+    #estudiantes .overlay {
+        padding-top: 10px;
+        /*background-color: rgba(36, 36, 36, 0.8);*/
+        min-height: 700px;
+        padding-bottom: 40px;
+    }
+     #estudiantes h1 {
+      margin-bottom: 20px;
+line-height: 40px;
+font-size: 35px;
+color: #48A5FF;
+text-transform:uppercase;
+    }
+    #estudiantes h4 {
+      margin-bottom: 30px;
+line-height: 40px;
+font-size: 20px;
+color: #D0D0D0;
+    }
+
+/*================================
   BUTTON STYLES
 ==================================*/
 .btn-custom {
@@ -344,4 +376,9 @@ width:100%;
 margin-top:20px;
 }
 
+}
+
+.modal-body{
+    height: 400px;
+    overflow-y: auto !important; 
 }

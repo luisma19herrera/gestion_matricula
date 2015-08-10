@@ -30,7 +30,7 @@
      <!-- IE10 viewport hack  -->
     <script src="assets/js/ie-10-view-port.js"></script>
 </head>
-<body>
+<body >
 
 	<!--<p class="notice"><%= notice %></p>
    <p class="alert"><%= alert %></p>
@@ -82,12 +82,17 @@
             <li><%= link_to 'Contactenos', home_contactenos_path%></li>
           </ul>
         </li>
+        <% if acudiente_signed_in? %>
+          <li><%= link_to 'Estudiantes', estudiantes_path%></li>
+        <% end %>
       </ul>
 
       <% if acudiente_signed_in? %>
+      <% nombre = "#{current_acudiente.nombre} #{current_acudiente.apellidos}" %>
       <form id="signin" class="navbar-form navbar-right" role="form">
-        <%= link_to current_acudiente.nombre, edit_acudiente_registration_path %> 
-        <%= link_to 'Cerrar Sesion', destroy_acudiente_session_path, method: :delete %>   
+        <span class=""><%= link_to nombre, edit_acudiente_registration_path %> </span>
+        <span> | </span>
+        <span class=""><%= link_to 'Cerrar Sesion', destroy_acudiente_session_path, method: :delete %></span>   
      </form>
       
     <% else %> 

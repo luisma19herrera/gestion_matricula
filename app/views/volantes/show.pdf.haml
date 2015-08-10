@@ -1,23 +1,150 @@
-%p
-  %strong Concepto
-  = @volante.concepto
 
-%p
-  %strong Valor: 
-  = @volante.valor 
 
-%p
-  %strong F generacion: 
-  = @volante.f_generacion 
+<fieldset>
 
-%p
-  %strong F ingreso: 
-  = @volante.f_ingreso 
+<TABLE BORDER=1 WIDTH=300 >
 
-%p
-  %strong Numero comprobante: 
-  = @volante.numero_comprobante 
+<legend>Datos Estudiante</legend>
 
-%p
-  %strong Estudiante: 
-  = @volante.estudiante_id 
+<TR>
+<TD WIDTH=100>
+<p><strong>Nombre Estudiante:</strong></p> 
+</TD> 
+
+<TD WIDTH=100> 
+<p><strong>Identificaci&oacuten:</strong></p>
+</TD> 
+
+<TD WIDTH=100> 
+<p><strong>Codigo:</strong></p> 
+</TD> 
+
+<TD WIDTH=100> 
+<p><strong>Fecha:</strong></p> 
+</TD> 
+</TR>
+
+<TR>
+<TD WIDTH=100>  
+
+= "#{@volante.estudiante.nombre} #{@volante.estudiante.apellidos}"
+</TD>
+
+<TD WIDTH=100> 
+= @volante.estudiante.doc_identidad
+</TD> 
+
+<TD WIDTH=100>
+= @volante.id 
+</TD>
+
+<TD WIDTH=100> 
+</TD>
+ 
+</TR>
+
+</TABLE>
+
+</fieldset>
+
+<fieldset>
+<TABLE BORDER=1 WIDTH=300>
+
+<legend>Datos de Pago</legend>
+
+<TR>
+<TD WIDTH=100>
+<p><strong>Banco:</strong></p>
+
+</TD>
+
+<TD WIDTH=100>
+<p><strong>Direcci&oacuten:</strong></p>
+</TD>
+
+<TD WIDTH=100>
+<p><strong>Cuenta:</strong></p>
+</TD>
+
+</TR>
+
+<TR>
+<TD WIDTH=100>
+
+<p>BANCO AVVILLAS</p>
+
+</TD>
+
+<TD WIDTH=100>
+<p>CUALQUIER SUCURSAL</p>
+</TD>
+
+<TD WIDTH=100>
+<p>987654321987</p>
+</TD>
+
+</TR>
+
+</TABLE>
+
+</fieldset>
+
+
+<fieldset>
+
+
+
+<TABLE BORDER=1 WIDTH=300>
+
+
+
+<TD WIDTH=100>
+<p><strong>Concepto</strong></p>
+</TD>
+
+<TD WIDTH=100>
+<p><strong>Valor</strong></p>
+</TD>
+</TR>
+
+<TR>
+<TD WIDTH=100>
+=@volante.concepto
+</TD>
+
+
+
+<TD WIDTH=100>
+=@volante.valor
+</TD>
+
+</TR>
+
+<TR>
+
+
+<TD WIDTH=100>
+<p>Total</p>
+</TD>
+
+<TD WIDTH=100>
+=@volante.valor
+</TD>
+</TR>
+
+</TABLE>
+
+
+
+
+</fieldset>
+
+
+<br>
+<br>
+<br>
+
+<hr>
+<p align="center"> Firma Autorizada</p>
+
+</form>

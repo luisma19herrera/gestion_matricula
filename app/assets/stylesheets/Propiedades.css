@@ -1,4 +1,10 @@
-form
+.logotipo{
+	 width: 100px; 
+	 height: 100px;
+	 align: right;
+}
+
+.formulario
 {
 	
 margin:0 auto;
@@ -10,14 +16,10 @@ border-radius:10px;
 box-shadow:0px 0px 5px #000;
 }
 
-form>h2
-{
-text-align:left;
-text-decoration:underline;
-}
 
 
-hr
+
+.formulario hr
 {
 width:300px;
 border: 0; 
@@ -26,7 +28,7 @@ border-top: 1px dashed black;
 border-bottom: 1px dashed black;
 }
 
-table 
+.formulario table 
 {     
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
     font-size: 12px;    
@@ -37,7 +39,7 @@ table
 
 }
 
-th 
+.formulario th 
 {   
   font-size: 13px;     
   font-weight: normal;    
@@ -48,7 +50,7 @@ th
       color: #039; 
   }
 
-td {  
+.formulario td {  
 	padding: 2px;     
 	background:#E6E6E6;  
 	border-bottom: 1px solid #fff;
@@ -56,27 +58,24 @@ td {
     border-top: 1px solid transparent;
      }
 
-tr:hover 
-td 
+.formulario tr:hover 
+
+.formulario td 
 { 
 background: #d0dafd;
  color: #339; 
 }
 
-body 
+.volante 
 {
 font-family: Arial, Helvetica, sans-serif;
 margin: 0 auto;
 }
 
-h1 
+.formulario h1 
 {
 padding-left:125px;	
 color: black; 
 text-shadow: black 0.1em 0.1em 0.2em
 }
 
-fieldset
-{
-	width: 60px;
-}

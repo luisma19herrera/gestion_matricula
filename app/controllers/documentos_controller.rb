@@ -33,11 +33,14 @@ class DocumentosController < ApplicationController
   # POST /documentos.json
   def create
     @documento = Documento.new(documento_params)
-    @documento.archivo = params[:file] # Assign a file like this, or
+    @documento.estudiante_id = $id_estudiante
+    @documento.fecha_ingreso = Date.current.to_s
+
+
 
     respond_to do |format|
       if @documento.save
-        format.html { redirect_to @documento, notice: 'Documento was successfully created.' }
+        format.html { redirect_to "http://localhost:3000/estudiantes", notice: 'Documento was successfully created.' }
         format.json { render :show, status: :created, location: @documento }
       else
         format.html { render :new }

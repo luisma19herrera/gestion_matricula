@@ -1,4 +1,12 @@
-<%= form_for(@estudiante) do |f| %>
+<div class="row text-center">
+<h1>Registrar Estudiante</h1>
+   <div class="col-lg-1 col-md-6 col-sm-6 col-xs-12 logo-wrapper">   
+
+     <%= image_tag "ingresoe.png", :alt => "Resgistro Estudiante", :title => "Registro Estudiante"%>
+  </div>
+  <div class="col-lg-11 col-md-6 col-sm-6 col-xs-12 logo-wrapper">
+  
+<%= form_for @estudiante, :html => {:class => "form-horizontal"} do |f| %>
   <% if @estudiante.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@estudiante.errors.count, "error") %> prohibited this estudiante from being saved:</h2>
@@ -11,59 +19,82 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nombre %><br>
-    <%= f.text_field :nombre %>
+  <div class="form-group">
+    <%= f.label :nombre, class: "control-label col-xs-4" %>
+    <div class="col-xs-8">
+    <%= f.text_field :nombre, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :apellidos %><br>
-    <%= f.text_field :apellidos %>
+  <div class="form-group">
+    <%= f.label :apellidos, class: "control-label col-xs-4" %>
+    <div class="col-xs-8">
+    <%= f.text_field :apellidos, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :edad %><br>
-    <%= f.number_field :edad %>
+  <div class="form-group">
+    <%= f.label :edad, class: "control-label col-xs-4" %>
+    <div class="col-xs-8">
+    <%= f.number_field :edad, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :doc_identidad %><br>
-    <%= f.text_field :doc_identidad %>
+  <div class="form-group">
+    <%= f.label :doc_identidad, class: "control-label col-xs-4" %>
+    <div class="col-xs-8">
+    <%= f.text_field :doc_identidad, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :lugar_expedicion %><br>
-    <%= f.text_field :lugar_expedicion %>
+  <div class="form-group">
+    <%= f.label :lugar_expedicion, class: "control-label col-xs-4" %>
+    <div class="col-xs-8">
+    <%= f.text_field :lugar_expedicion, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :grado %><br>
-    <%= f.number_field :grado %>
+  <div class="form-group">
+    <%= f.label :grado, class: "control-label col-xs-4" %>
+    <div class="col-xs-8">
+    <%= f.number_field :grado, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :f_nacimiento %><br>
-    <%= f.date_select :f_nacimiento %>
+  <div class="form-group">
+    <%= f.label :f_nacimiento, class: "control-label col-xs-4" %>
+    <div class="col-xs-8">
+    <%= f.date_select :f_nacimiento, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :institucion_anterior %><br>
-    <%= f.text_field :institucion_anterior %>
+  <div class="form-group">
+    <%= f.label :institucion_anterior, class: "control-label col-xs-4" %>
+    <div class="col-xs-8">
+    <%= f.text_field :institucion_anterior, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :grado_aspirado %><br>
-    <%= f.number_field :grado_aspirado %>
+  <div class="form-group">
+    <%= f.label :grado_aspirado, class: "control-label col-xs-4" %>
+    <div class="col-xs-8">
+    <%= f.number_field :grado_aspirado, class: "form-control" %>
+    </div>
   </div>
   <!--<div class="field">
-    <%= f.label :estado %><br>
+    <%= f.label :estado %>
     <%= f.text_field :estado %>
   </div>-->
   <!--<div class="field">
-    <%= f.label :acudiente_id %><br>
+    <%= f.label :acudiente_id %>
     <%= f.number_field :acudiente_id %>
   </div>-->
   <!--<div class="field">
-    <%= f.label :f_examen %><br>
+    <%= f.label :f_examen %>
     <%= f.date_select :f_examen %>
   </div>
   <div class="field">
-    <%= f.label :f_matricula %><br>
+    <%= f.label :f_matricula %>
     <%= f.date_select :f_matricula %>
   </div>-->
-  <div class="actions">
-    <%= f.submit %>
+  <div class="col-xs-offset-3 col-xs-9">
+    <%= f.submit "Registrar", class: "btn btn-primary" %>
+    <input type="reset" class="btn btn-default" value="Limpiar">
   </div>
 <% end %>
+</div>
+
+</div>
+

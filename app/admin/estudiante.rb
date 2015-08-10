@@ -14,4 +14,5 @@ ActiveAdmin.register Estudiante do
 # end
 
 
+permit_params :estado
 end
