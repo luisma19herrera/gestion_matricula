@@ -33,248 +33,343 @@
        
         <tbody>
           <% @estudiantes.each do |estudiante| %>
-          <% if estudiante.acudiente.id = current_acudiente.id %>
-          <% nombre = "#{estudiante.nombre} #{estudiante.apellidos}" %>
-            <tr>
-              <td><%= estudiante.nombre %></td>
-              <td><%= estudiante.apellidos %></td>
-              <td><%= estudiante.edad %></td>
-              <td><%= estudiante.doc_identidad %></td>
-              <!--<td><%= estudiante.lugar_expedicion %></td>
-              <td><%= estudiante.grado %></td>
-              <td><%= estudiante.f_nacimiento %></td>
-              <td><%= estudiante.institucion_anterior %></td>
-              <td><%= estudiante.grado_aspirado %></td>-->
-              <td><%= estudiante.estado %></td>
-              <!--<td><%= nombre%></td>-->
-              
-              <td><%= link_to 'Show', "#myModal", "data-toggle" => "modal"%></td>
-              <td><%= link_to 'Edit', edit_estudiante_path(estudiante) %></td>
-              <td><%= link_to 'Destroy', estudiante, method: :delete, data: { confirm: 'Are you sure?' } %></td>              
-            </tr>
-            <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog" >
-  <div class="modal-dialog">
+            <% if estudiante.acudiente.id == current_acudiente.id %>
+              <% url = "#myModal?id=#{estudiante.id}" %>
+              <% nombre = "#{estudiante.nombre} #{estudiante.apellidos}" %>
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><%nombre%></h4>
-      </div>
-      <div class="modal-body">
-        <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#info">Informacion Estudiante</a></li>
-  <li><a data-toggle="tab" href="#docs">Documentos Estudiante</a></li>
-  <li><a data-toggle="tab" href="#volante">Volantes</a></li>
-</ul>
+                <tr>
+                  <td><%= estudiante.nombre %></td>
+                  <td><%= estudiante.apellidos %></td>
+                  <td><%= estudiante.edad %></td>
+                  <td><%= estudiante.doc_identidad %></td>
+                  <!--<td><%= estudiante.lugar_expedicion %></td>
+                  <td><%= estudiante.grado %></td>
+                  <td><%= estudiante.f_nacimiento %></td>
+                  <td><%= estudiante.institucion_anterior %></td>
+                  <td><%= estudiante.grado_aspirado %></td>-->
+                  <td><%= estudiante.estado %></td>
+                  <!--<td><%= nombre%></td>-->
+                  <% modal = "#modal#{estudiante.id}"%>
+                  <% modalName = "modal#{estudiante.id}"%>
+                  <% info = "#info#{estudiante.id}"%>
+                  <% infoName = "info#{estudiante.id}"%>
+                  <% docs = "#docs#{estudiante.id}"%>
+                  <% docsName = "docs#{estudiante.id}"%>
+                  <% volante = "#volante#{estudiante.id}"%>
+                  <% volanteName = "volante#{estudiante.id}"%>
+                  <% fecha = "#fecha#{estudiante.id}"%>
+                  <% fechaName = "fecha#{estudiante.id}"%>
 
-<div class="tab-content">
-  <div id="info" class="tab-pane fade in active">
-    <p>
-  <strong>Nombre:</strong>
-  <%= estudiante.nombre %>
-</p>
+                  <td><%= link_to 'Mas info', modal, "data-toggle" => "modal"%></td>
+                  <td><%= link_to 'Editar', edit_estudiante_path(estudiante) %></td>
+                  <td><%= link_to 'Eliminar', estudiante, method: :delete, data: { confirm: 'Are you sure?' } %></td>              
+                </tr>
+              <!-- Modal -->
+              <div id="<%=modalName%>" class="modal fade" role="dialog" >
+                <div class="modal-dialog">
 
-<p>
-  <strong>Apellidos:</strong>
-  <%= estudiante.apellidos %>
-</p>
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      
 
-<p>
-  <strong>Edad:</strong>
-  <%= estudiante.edad %>
-</p>
+                      <h4 class="modal-title"><%= nombre%></h4>
+                    </div>
+                    <div class="modal-body">
+                      <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="<%=info%>">Informacion Estudiante</a></li>
+                        <li><a data-toggle="tab" href="<%=docs%>">Documentos Estudiante</a></li>
+                        <li><a data-toggle="tab" href="<%=volante%>">Volantes</a></li>
+                        <li><a data-toggle="tab" href="<%=fecha%>">Fechas de examen y matricula</a></li>
+                      </ul>
 
-<p>
-  <strong>Doc identidad:</strong>
-  <%= estudiante.doc_identidad %>
-</p>
+                    <div class="tab-content">
+                      <div id="<%=infoName%>" class="tab-pane fade in active">
+                        <p>
+                          <strong>Nombre:</strong>
+                          <%= estudiante.nombre %>
+                        </p>
 
-<p>
-  <strong>Lugar expedicion:</strong>
-  <%= estudiante.lugar_expedicion %>
-</p>
+                        <p>
+                          <strong>Apellidos:</strong>
+                          <%= estudiante.apellidos %>
+                        </p>
 
-<p>
-  <strong>Grado:</strong>
-  <%= estudiante.grado %>
-</p>
+                        <p>
+                          <strong>Edad:</strong>
+                          <%= estudiante.edad %>
+                        </p>
 
-<p>
-  <strong>F nacimiento:</strong>
-  <%= estudiante.f_nacimiento %>
-</p>
+                        <p>
+                          <strong>Doc identidad:</strong>
+                          <%= estudiante.doc_identidad %>
+                        </p>
 
-<p>
-  <strong>Institucion anterior:</strong>
-  <%= estudiante.institucion_anterior %>
-</p>
+                        <p>
+                          <strong>Lugar expedicion:</strong>
+                          <%= estudiante.lugar_expedicion %>
+                        </p>
 
-<p>
-  <strong>Grado aspirado:</strong>
-  <%= estudiante.grado_aspirado %>
-</p>
+                        <p>
+                          <strong>Grado:</strong>
+                          <%= estudiante.grado %>
+                        </p>
 
-<p>
-  <strong>Estado:</strong>
-  <%= estudiante.estado %>
-</p>
+                        <p>
+                          <strong>F nacimiento:</strong>
+                          <%= estudiante.f_nacimiento %>
+                        </p>
 
-  </div>
-  <div id="docs" class="tab-pane fade">
+                        <p>
+                          <strong>Institucion anterior:</strong>
+                          <%= estudiante.institucion_anterior %>
+                        </p>
 
-    <h3>Documentos del Alumno</h3>
-    <hr>
-    <% $id_estudiante = estudiante.id%>
-    <%if estudiante.estado == "Inscrito"%>
-    <% @documentos = Documento.all%>
-    <% @documento = Documento.new %>
+                        <p>
+                          <strong>Grado aspirado:</strong>
+                          <%= estudiante.grado_aspirado %>
+                        </p>
 
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 logo-wrapper">
+                        <p>
+                          <strong>Estado:</strong>
+                          <%= estudiante.estado %>
+                        </p>
 
-    <% if @documentos.count != 0%>
-
-    <ul>
-    <% @documentos.each do |documento| %>
-
-    
-    <% if documento.estudiante.id == estudiante.id%>
-                         
-      <li><%= link_to documento.tipo_documento, documento.adjunto.url %></li>
-      
-    </tr>
-    <% end %>
-    <% end %>
-
-    </ul>
-    
-    
-    </div>
-      
-    <% end %>
-
-    <h3>Agregar documentos</h3>
-    <hr>
-    
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 logo-wrapper">
-    <%= form_for @documento, :html => {:multipart => true, :class => "form-horizontal"} do |f| %>
-      <div class="form-group">  
-          
-       </div>
-
-      <div class="form-group">      
-        <%= f.label :tipo_documento, class: "control-label " %>
-        <div class="">
-        <%= select_tag "Tipo Documento", options_for_select([["Boletin", "Boletin"],["Documento de identidad", "Documento de identidad"],["Constancia EPS", "Constancia EPS"], ["Foto tamaño 3x4", "Foto tamaño 3x4"]]), class: "form-control" %>
-        
-        </div>
-        <div class="">
-          <%= f.file_field :adjunto %>
-          </div>
-      </div>
-       
-      <div class="col-xs-3 col-xs-9">
-        <%= f.submit "Guardar", class: "btn btn-primary"%>
-      </div>
-    <% end %>
-    </div>
-      
-    <% else %>
-      <p>Para ingresar los documentos del alumno debe esperar que se verifique el pago de la inscripcion.</p>
-    <% end %>
-  
-
-</div>
-  <div id="volante" class="tab-pane fade">
-    <h3>Volante de Inscripcion</h3>
-    <hr>
-
-    <% @volante = Volante.new %>
-<% $id_estudiante = estudiante.id %>
-<% @lista_volante = Volante.all %>
-      <% if estudiante.estado == "Aspirante" %>
-<%= form_for(@volante) do |f| %>
-  <% if @volante.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@volante.errors.count, "error") %> prohibited this volante from being saved:</h2>
-
-      <ul>
-      <% @volante.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %> 
-
-    <div class="field">
-      <%= f.hidden_field :concepto, value: "PAGO INSCRIPCION"%>
-    </div>
-    <div class="field">
-      <%= f.hidden_field :valor, value: "10000"%>
-    </div>
-    <div class="actions">
-      <%= f.submit :Inscripcion, "Generar Volante"%>
-    </div> 
-<% end %>
-
-<% else %>
-
-   <% @lista_volante.each do |volante| %>
-      <% if estudiante.id == volante.estudiante.id %>
-       <div class="col-xs-9">
-       <%= link_to 'Ver Volante', volante_path(volante.id), class: "btn btn-primary"%>
-        
-      </div>
-      
-        <% @volante = Volante.find(volante.id) %>
-        <%= form_for @volante, url: volante_path(volante.id), :html => {:multipart => true} do |f| %>
-          <% if @volante.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(@volante.errors.count, "error") %> prohibited this volante from being saved:</h2>
-
-              <ul>
-              <% @volante.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-              </ul>
-            </div>
-          <% end %> 
-
-         <div class="field">
-              <%= f.hidden_field :id, value: volante.id%>
-          </div>
-          <div class="field">
-            <%= f.label :numero_comprobante %><br>
-            <%= f.text_field :numero_comprobante %>
-          </div>
-          <div class="field">
-              <%= f.label :soporte, "Adjunto" %>
-              <%= f.file_field :soporte %>
-          </div>
-          <div class="actions">
-            <%= f.submit :Aceptar%>
-          </div>     
-        <% end %>        
-      <% end %>
-   <% end %>   
-  <% end %>
+                      </div>
 
 
+                      <!--DATOS DEL ESTUDIANTE -->
+                      <div id="<%=docsName%>" class="tab-pane fade">
 
-    <h3>Volante de Matricula</h3>
-    <hr>
-  </div>
-</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
+                        <h3>Documentos del Alumno</h3>
+                        <hr>
+                        <% $id_estudiante = estudiante.id%>
+                        <%if estudiante.estado == "Inscrito"%>
+                        <% @documentos = Documento.all%>
+                        <% @documento = Documento.new %>
 
-  </div>
-</div>
-          <% end %>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 logo-wrapper">
+                          <% if @documentos.count != 0%>
+                            <ul>
+                              <% @documentos.each do |documento| %>
+                                <% if documento.estudiante.id == estudiante.id%>                         
+                                  <li><%= link_to documento.tipo_documento, documento.adjunto.url %></li>
+                                <% end %>
+                              <% end %>
+                            </ul>
+                          <% end %>
+                        </div>      
+                        
+
+                        <h3>Agregar documentos</h3>
+                        <hr>    
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 logo-wrapper">
+                          <%= form_for @documento, :html => {:multipart => true, :class => "form-horizontal"} do |f| %>
+                            
+                            <div class="form-group">      
+                              <%= f.label :tipo_documento, class: "control-label " %>
+                              <div class="">
+                              <%= select_tag "Tipo Documento", options_for_select([["Boletin", "Boletin"],["Documento de identidad", "Documento de identidad"],["Constancia EPS", "Constancia EPS"], ["Foto tamaño 3x4", "Foto tamaño 3x4"]]), class: "form-control" %>
+                              
+                              </div>
+                              <div class="">
+                                <%= f.file_field :adjunto %>
+                                </div>
+                            </div>
+                             
+                            <div class="col-xs-3 col-xs-9">
+                              <%= f.submit "Guardar", class: "btn btn-primary"%>
+                            </div>
+                          <% end %>
+                        </div>
+                          
+                        <% else %>
+                          <p>Para ingresar los documentos del alumno debe esperar que se verifique el pago de la inscripcion.</p>
+                        <% end %>
+                    </div>
+
+                    <!-- FIN DATOS DEL ESTUDIANTE -->
+
+                    <!--VOLANTES-->
+                      <div id="<%=volanteName%>" class="tab-pane fade">
+                        <h3>Volante de Inscripcion</h3>
+                        <hr>
+
+                        <% @volante = Volante.new %>
+                        <% $id_estudiante = estudiante.id %>
+                        <% @lista_volante = Volante.all %>
+                          <% if estudiante.estado == "Aspirante" %>
+                            <%= form_for @volante,:html => {:class => "form-horizontal"} do |f| %>
+                              <% if @volante.errors.any? %>
+                                <div id="error_explanation">
+                                  <h2><%= pluralize(@volante.errors.count, "error") %> prohibited this volante from being saved:</h2>
+
+                                  <ul>
+                                  <% @volante.errors.full_messages.each do |message| %>
+                                    <li><%= message %></li>
+                                  <% end %>
+                                  </ul>
+                                </div>
+                              <% end %> 
+
+                                <div class="field">
+                                  <%= f.hidden_field :concepto, value: "PAGO INSCRIPCION"%>
+                                </div>
+                                <div class="field">
+                                  <%= f.hidden_field :valor, value: "10000"%>
+                                </div>
+                                <div class="actions">
+                                  <%= f.submit "Generar Volante", class: "btn btn-primary"%>
+                                </div> 
+                            <% end %>
+
+                          <% else %>
+
+                             <% @lista_volante.each do |volante| %>
+                                <% if estudiante.id == volante.estudiante.id && volante.concepto=="PAGO INSCRIPCION"%>
+                                   <div class="col-xs-12">
+                                    <%= link_to 'Ver Volante', volante_path(volante.id), class: "btn btn-primary"%>                      
+                                  </div>
+                                
+                                  <% @volante = Volante.find(volante.id) %>
+                                  <%= form_for @volante, url: volante_path(volante.id), :html => {:multipart => true} do |f| %>
+                                    <% if @volante.errors.any? %>
+                                      <div id="error_explanation">
+                                        <h2><%= pluralize(@volante.errors.count, "error") %> prohibited this volante from being saved:</h2>
+                                        <ul>
+                                          <% @volante.errors.full_messages.each do |message| %>
+                                            <li><%= message %></li>
+                                          <% end %>
+                                        </ul>
+                                      </div>
+                                    <% end %> 
+
+                                   <div class="field">
+                                        <%= f.hidden_field :id, value: volante.id%>
+                                    </div>
+                                    
+                                    <div class="field">
+                                        <%= f.label :soporte, "Adjunto" %>                       
+                                        <%= f.file_field "Examinar" %>
+                                        
+                                    </div>
+                                    <div class="col-xs-12">
+                                      <%= f.submit :Aceptar,  class: "btn btn-primary"%>
+                                    </div></br>     
+                                  <% end %>        
+                                <% end %>
+                             <% end %>   
+                          <% end %>
+
+
+
+                        <h3>Volante de Matricula</h3>
+                        <hr>
+                        <% @lista_volante = Volante.all %>
+
+                          <% if estudiante.estado == "Aprobado" %>
+                            <%= form_for(@volante) do |f| %>
+                              <% if @volante.errors.any? %>
+                                <div id="error_explanation">
+                                  <h2><%= pluralize(@volante.errors.count, "error") %> prohibited this volante from being saved:</h2>
+
+                                  <ul>
+                                  <% @volante.errors.full_messages.each do |message| %>
+                                    <li><%= message %></li>
+                                  <% end %>
+                                  </ul>
+                                </div>
+                              <% end %> 
+
+                                <div class="field">
+                                  <%= f.hidden_field :concepto, value: "PAGO MATRICULA"%>
+                                </div>
+                                <div class="field">
+                                  <%= f.hidden_field :valor, value: "180000"%>
+                                </div>
+                                <div class="actions">
+                                  <%= f.submit "Generar Volante", class: "btn btn-primary"%>
+                                </div> 
+                            <% end %>
+
+                          <% else %>
+
+                             <% @lista_volante.each do |volante| %>
+                                <% if estudiante.id == volante.estudiante.id && volante.concepto=="PAGO MATRICULA"%>
+                                   <div class="col-xs-9">
+                                    <%= link_to 'Ver Volante', volante_path(volante.id), class: "btn btn-primary"%>                      
+                                  </div>
+                                
+                                  <% @volante = Volante.find(volante.id) %>
+                                  <%= form_for @volante, url: volante_path(volante.id), :html => {:multipart => true} do |f| %>
+                                    <% if @volante.errors.any? %>
+                                      <div id="error_explanation">
+                                        <h2><%= pluralize(@volante.errors.count, "error") %> prohibited this volante from being saved:</h2>
+                                        <ul>
+                                          <% @volante.errors.full_messages.each do |message| %>
+                                            <li><%= message %></li>
+                                          <% end %>
+                                        </ul>
+                                      </div>
+                                    <% end %> 
+
+                                   <div class="field">
+                                        <%= f.hidden_field :id, value: volante.id%>
+                                    </div>
+                                    
+                                    <div class="field">
+                                        <%= f.label :soporte, "Adjunto" %>
+                                        
+                                        <%= f.file_field "Examinar" %>
+                                        
+                                    </div>
+                                    <div class="col-xs-12">
+                                      <%= f.submit :Aceptar,  class: "btn btn-primary"%>
+                                    </div></br>
+                                  <% end %>        
+                                <% end %>
+                             <% end %>   
+                          <% end %>
+                        
+                      </div>
+                      <!--FIN VOLANTES-->
+                      
+
+                      <!--FECHAS-->
+                      <div id="<%=fechaName%>" class="tab-pane fade">
+
+                        <h3>Fecha de Examen</h3>
+                        <hr>
+
+                        <% if estudiante.f_examen? %>
+                          <p>La fecha de presentacion de su examen es: <%= estudiante.f_examen%></p>
+                        <% else %>
+                          <p>Fecha de presentacion de examen pendiente por programar</p>
+                        <% end %>
+
+                        <h3>Fecha Firma de Matricula</h3>
+                        <hr>
+                        <% if estudiante.f_matricula?%>
+                          <p>La fecha de firma de su matricula es: <%= estudiante.f_matricula%></p>
+                        <% else %>
+                          <p>Fecha de firma de matricula pendiente por programar</p>
+                        <% end %>
+                      </div>
+
+                      <!--FIN FECHAS-->
+
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            <% end %>
           <% end %>
         </tbody>
       </table>                   

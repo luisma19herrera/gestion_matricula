@@ -40,7 +40,7 @@ class DocumentosController < ApplicationController
 
     respond_to do |format|
       if @documento.save
-        format.html { redirect_to "http://localhost:3000/estudiantes", notice: 'Documento was successfully created.' }
+        format.html { redirect_to "http://localhost:3000/estudiantes", notice: 'Documento creado exitosamente' }
         format.json { render :show, status: :created, location: @documento }
       else
         format.html { render :new }
@@ -54,7 +54,7 @@ class DocumentosController < ApplicationController
   def update
     respond_to do |format|
       if @documento.update(documento_params)
-        format.html { redirect_to @documento, notice: 'Documento was successfully updated.' }
+        format.html { redirect_to "http://localhost:3000/estudiantes", notice: 'Documento actualizado exitosamente' }
         format.json { render :show, status: :ok, location: @documento }
       else
         format.html { render :edit }
@@ -68,7 +68,7 @@ class DocumentosController < ApplicationController
   def destroy
     @documento.destroy
     respond_to do |format|
-      format.html { redirect_to documentos_url, notice: 'Documento was successfully destroyed.' }
+      format.html { redirect_to "http://localhost:3000/estudiantes", notice: 'Documento eliminado exitosamente' }
       format.json { head :no_content }
     end
   end

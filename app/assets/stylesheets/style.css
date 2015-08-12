@@ -378,7 +378,13 @@ margin-top:20px;
 
 }
 
+.modal-dialog{
+    width: 800px;
+}
+
+
 .modal-body{
+    
     height: 400px;
     overflow-y: auto !important; 
 }

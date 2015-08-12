@@ -4,5 +4,7 @@ class Acudiente < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 	has_many :estudiantes
+
+	validates :identificacion, uniqueness:true
 	
 end

@@ -46,7 +46,7 @@ class VolantesController < ApplicationController
 
     respond_to do |format|
       if @volante.save
-        format.html { redirect_to @volante, notice: 'Volante was successfully created.' }
+        format.html { redirect_to @volante, notice: 'Volante creado exitosamente' }
         format.json { render :show, status: :created, location: @volante }
       else
         format.html { render :new }
@@ -61,7 +61,7 @@ class VolantesController < ApplicationController
     
     respond_to do |format|
       if @volante.update(volante_params)
-        format.html { redirect_to @volante, notice: 'Volante was successfully updated.' }
+        format.html { redirect_to "http://localhost:3000/estudiantes", notice: 'Volante actualizado exitosamente' }
         format.json { render :show, status: :ok, location: @volante }
       else
         format.html { render :edit }
@@ -75,7 +75,7 @@ class VolantesController < ApplicationController
   def destroy
     @volante.destroy
     respond_to do |format|
-      format.html { redirect_to volantes_url, notice: 'Volante was successfully destroyed.' }
+      format.html { redirect_to "http://localhost:3000/estudiantes", notice: 'Volante eliminado exitosamente' }
       format.json { head :no_content }
     end
   end

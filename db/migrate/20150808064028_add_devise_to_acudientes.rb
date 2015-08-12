@@ -37,7 +37,7 @@ class AddDeviseToAcudientes < ActiveRecord::Migration
 
     add_index :acudientes, :email,                unique: true
     add_index :acudientes, :reset_password_token, unique: true
-    # add_index :acudientes, :confirmation_token,   unique: true
+    add_index :acudientes, :cedula,   unique: true
     # add_index :acudientes, :unlock_token,         unique: true
   end
 

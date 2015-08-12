@@ -8,8 +8,8 @@ class CreateAcudientes < ActiveRecord::Migration
       t.string :cargo
       t.string :empresa
       t.string :direccion
-      t.integer :telefono
-      t.integer :celular
+      t.string :telefono
+      t.string :celular
 
       t.timestamps null: false
     end

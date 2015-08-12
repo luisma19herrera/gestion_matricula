@@ -26,17 +26,20 @@ class AcudientesController < ApplicationController
   # POST /acudientes
   # POST /acudientes.json
   def create
+    if Acudiente.find(params[:identificacion])?
+    else
     @acudiente = Acudiente.new(acudiente_params)
 
     respond_to do |format|
       if @acudiente.save
-        format.html { redirect_to @acudiente, notice: 'Acudiente was successfully created.' }
+        format.html { redirect_to "http://localhost:3000/estudiantes", notice: 'Acudiente creado exitosamente' }
         format.json { render :show, status: :created, location: @acudiente }
       else
-        format.html { render :new }
+        format.html { render :new, notice: 'ERROR'}
         format.json { render json: @acudiente.errors, status: :unprocessable_entity }
       end
     end
+  end
   end
 
   # PATCH/PUT /acudientes/1
@@ -44,7 +47,7 @@ class AcudientesController < ApplicationController
   def update
     respond_to do |format|
       if @acudiente.update(acudiente_params)
-        format.html { redirect_to @acudiente, notice: 'Acudiente was successfully updated.' }
+        format.html { redirect_to "http://localhost:3000/estudiantes", notice: 'Acudiente actualizado exitosamente' }
         format.json { render :show, status: :ok, location: @acudiente }
       else
         format.html { render :edit }
@@ -58,7 +61,7 @@ class AcudientesController < ApplicationController
   def destroy
     @acudiente.destroy
     respond_to do |format|
-      format.html { redirect_to acudientes_url, notice: 'Acudiente was successfully destroyed.' }
+      format.html { redirect_to "http://localhost:3000/estudiantes", notice: 'Acudiente eliminado exitosamente' }
       format.json { head :no_content }
     end
   end
