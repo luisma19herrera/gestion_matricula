@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get 'home/galeria' => 'home#galeria'
   get 'home/manual' => 'home#manual'
   get 'home/contactenos' => 'home#contactenos'
+
+  patch 'admin/estudiantes/:id' => 'estudiantes#actualizar', as: :actualizar_estudiante
+  get 'admin/estudiantes/:id/editar' => 'estudiantes#editar', as: :editar_estudiante
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

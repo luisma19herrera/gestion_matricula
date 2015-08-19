@@ -35,14 +35,22 @@ class VolantesController < ApplicationController
   # POST /volantes.json
   def create
     @volante = Volante.new(volante_params)
-    @volante.estudiante_id = $id_estudiante
+    
     @volante.f_generacion =Date.current.to_s
 
-    @estudiante = Estudiante.find($id_estudiante)
-    @estudiante.update_attributes({
-       :estado => "Pre Inscrito"
-       
-    });
+    @estudiante = Estudiante.find(@volante.estudiante_id)
+
+    if @volante.concepto=="PAGO INSCRIPCION"
+      @estudiante.update_attributes({
+         :estado => "Pre Inscrito"
+         
+      });
+    else
+      @estudiante.update_attributes({
+         :estado => "Pre Matriculado"
+         
+      });
+    end
 
     respond_to do |format|
       if @volante.save
@@ -58,7 +66,28 @@ class VolantesController < ApplicationController
   # PATCH/PUT /volantes/1
   # PATCH/PUT /volantes/1.json
   def update
-    
+    @estudiante = Estudiante.find(@volante.estudiante.id)
+      @volante.f_ingreso = Date.current.to_s
+      
+
+      @fecha = Horario.random
+      @soporte = params[:soporte]
+
+      fecha_hora = "#{@fecha.fecha} #{@fecha.hora_inicio} - #{@fecha.hora_fin}" 
+      
+      if @volante.concepto == "PAGO INSCRIPCION" && @volante.estudiante.estado == "Pre Inscrito"
+      @estudiante.update_attributes({
+         :estado => "Inscrito"
+         
+      });
+      else
+        if @volante.concepto == "PAGO MATRICULA" && @volante.estudiante.estado == "Matriculado"
+          @estudiante.update_attributes({
+             :estado => "Pendiente por firma",   
+             :f_matricula  => fecha_hora
+          });
+        end
+      end
     respond_to do |format|
       if @volante.update(volante_params)
         format.html { redirect_to "http://localhost:3000/estudiantes", notice: 'Volante actualizado exitosamente' }
@@ -84,6 +113,7 @@ class VolantesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_volante
       @volante = Volante.find(params[:id])
+      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

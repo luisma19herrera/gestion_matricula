@@ -32,12 +32,45 @@ class DocumentosController < ApplicationController
   # POST /documentos
   # POST /documentos.json
   def create
-    @documento = Documento.new(documento_params)
-    @documento.estudiante_id = $id_estudiante
+    @documento = Documento.new(documento_params)    
     @documento.fecha_ingreso = Date.current.to_s
+    @estudiante = Estudiante.find(@documento.estudiante_id)
+    @documentos = Documento.all
+    contador = 1
+
+    @documentos.each do |doc|
+      if doc.estudiante_id == @documento.estudiante_id && doc.tipo_documento == "Boletin"
+        contador = contador + 1
+      else
+        if doc.estudiante_id == @documento.estudiante_id && doc.tipo_documento == "Documento de identidad"
+          contador = contador + 1
+        else
+          if doc.estudiante_id == @documento.estudiante_id && doc.tipo_documento == "Constancia EPS"
+            contador = contador + 1
+          else
+            if doc.estudiante_id == @documento.estudiante_id && doc.tipo_documento == "Foto tamaño 3x4"
+              contador = contador + 1
+            end
+          end
+
+        end
+
+      end      
+
+      
+    end
+
+      @fecha = Horario.random
 
 
-
+      fecha_hora = "#{@fecha.fecha} #{@fecha.hora_inicio} - #{@fecha.hora_fin}" 
+    if contador==4
+      @estudiante.update_attributes({
+         :estado => "Pendiente por examen",
+         :f_examen  => fecha_hora
+      });
+    end
+    
     respond_to do |format|
       if @documento.save
         format.html { redirect_to "http://localhost:3000/estudiantes", notice: 'Documento creado exitosamente' }

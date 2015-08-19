@@ -22,6 +22,8 @@ class EstudiantesController < ApplicationController
   def edit
   end
 
+
+
   # POST /estudiantes
   # POST /estudiantes.json
   def create
@@ -46,6 +48,18 @@ class EstudiantesController < ApplicationController
     respond_to do |format|
       if @estudiante.update(estudiante_params)
         format.html { redirect_to "http://localhost:3000/estudiantes", notice: 'Estudiante actualizado exitosamente' }
+        format.json { render :show, status: :ok, location: @estudiante }
+      else
+        format.html { render :edit }
+        format.json { render json: @estudiante.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def actualizar
+    respond_to do |format|
+      if @estudiante.update(estudiante_params)
+        format.html { redirect_to "http://localhost:3000/admin/estudiantes", notice: 'Estudiante actualizado exitosamente' }
         format.json { render :show, status: :ok, location: @estudiante }
       else
         format.html { render :edit }

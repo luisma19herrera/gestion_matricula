@@ -7,17 +7,7 @@
   <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 logo-wrapper">
   
 <%= form_for @estudiante, :html => {:class => "form-horizontal"} do |f| %>
-  <% if @estudiante.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@estudiante.errors.count, "error") %> prohibited this estudiante from being saved:</h2>
-
-      <ul>
-      <% @estudiante.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  
 
   <div class="form-group">
     <%= f.label :nombre, class: "control-label col-xs-4" %>
@@ -58,7 +48,7 @@
   <div class="form-group">
     <%= f.label :f_nacimiento, class: "control-label col-xs-4" %>
     <div class="col-xs-8">
-    <%= f.date_select :f_nacimiento, class: "form-control" %>
+    <%= f.date_select :f_nacimiento, start_year: 1995, last_year: 2010, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">

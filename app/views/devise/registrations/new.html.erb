@@ -7,7 +7,10 @@
 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 logo-wrapper">
   <% @acudiente = Acudiente.new %>  
   <%= form_for(@acudiente, as: @acudiente, url: registration_path(@acudiente) , :html => {:class => "form-horizontal"}) do |f| %>
+  <div class="alert alert-warning">
   <%= devise_error_messages! %>
+</div>
+  
 
   <div class="form-group">
     <%= f.label :nombre, class: "control-label col-xs-5" %>

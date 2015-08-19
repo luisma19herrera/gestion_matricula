@@ -1,13 +1,11 @@
-<p id="notice"><%= notice %></p>
-
 <div class="row">
 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 logo-wrapper">
-   <img src="assets/img/ingresoe.png" alt="" />
+   
 </div>
 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 logo-wrapper table-responsive">
 <div class="col-xs-1 col-xs-9">
-    
-    <%= link_to 'Agregar Estudiante', new_estudiante_path, class: "btn btn-primary"%>    
+    <%= link_to 'Nuevo Estudiante', new_estudiante_path, class: "btn btn-primary"%>  
+       
     
   </div>
   </br>                      
@@ -86,66 +84,79 @@
 
                     <div class="tab-content">
                       <div id="<%=infoName%>" class="tab-pane fade in active">
-                        <p>
-                          <strong>Nombre:</strong>
-                          <%= estudiante.nombre %>
-                        </p>
-
-                        <p>
-                          <strong>Apellidos:</strong>
-                          <%= estudiante.apellidos %>
-                        </p>
-
-                        <p>
-                          <strong>Edad:</strong>
-                          <%= estudiante.edad %>
-                        </p>
-
-                        <p>
-                          <strong>Doc identidad:</strong>
-                          <%= estudiante.doc_identidad %>
-                        </p>
-
-                        <p>
-                          <strong>Lugar expedicion:</strong>
-                          <%= estudiante.lugar_expedicion %>
-                        </p>
-
-                        <p>
-                          <strong>Grado:</strong>
-                          <%= estudiante.grado %>
-                        </p>
-
-                        <p>
-                          <strong>F nacimiento:</strong>
-                          <%= estudiante.f_nacimiento %>
-                        </p>
-
-                        <p>
-                          <strong>Institucion anterior:</strong>
-                          <%= estudiante.institucion_anterior %>
-                        </p>
-
-                        <p>
-                          <strong>Grado aspirado:</strong>
-                          <%= estudiante.grado_aspirado %>
-                        </p>
-
-                        <p>
-                          <strong>Estado:</strong>
-                          <%= estudiante.estado %>
-                        </p>
+                        <div class="form-group">
+                          <label class="col-sm-4 control-label">Nombre</label>
+                          <div class="col-sm-8">
+                            <p class="form-control-static"><%= estudiante.nombre %></p>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-4 control-label">Apellidos</label>
+                          <div class="col-sm-8">
+                            <p class="form-control-static"><%= estudiante.apellidos %></p>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-4 control-label">Edad</label>
+                          <div class="col-sm-8">
+                            <p class="form-control-static"><%= estudiante.edad %></p>
+                          </div>
+                        </div> 
+                        <div class="form-group">
+                          <label class="col-sm-4 control-label">Identificacion</label>
+                          <div class="col-sm-8">
+                            <p class="form-control-static"><%= estudiante.doc_identidad %></p>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-4 control-label">Lugar de Expedicion</label>
+                          <div class="col-sm-8">
+                            <p class="form-control-static"><%= estudiante.lugar_expedicion %></p>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-4 control-label">Grado</label>
+                          <div class="col-sm-8">
+                            <p class="form-control-static"><%= estudiante.grado %></p>
+                          </div>
+                        </div>
+                        
+                       <div class="form-group">
+                          <label class="col-sm-4 control-label">Fecha Nacimiento</label>
+                          <div class="col-sm-8">
+                            <p class="form-control-static"><%= estudiante.f_nacimiento %></p>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-4 control-label">Institucion anterior</label>
+                          <div class="col-sm-8">
+                            <p class="form-control-static"><%= estudiante.institucion_anterior %></p>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-4 control-label">Grado aspirado</label>
+                          <div class="col-sm-8">
+                            <p class="form-control-static"><%= estudiante.grado_aspirado %></p>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-4 control-label">Estado</label>
+                          <div class="col-sm-8">
+                            <p class="form-control-static"><%= estudiante.estado %></p>
+                          </div>
+                        </div>
+                        
 
                       </div>
 
 
-                      <!--DATOS DEL ESTUDIANTE -->
+                      <!--DOCS DEL ESTUDIANTE -->
                       <div id="<%=docsName%>" class="tab-pane fade">
 
                         <h3>Documentos del Alumno</h3>
                         <hr>
                         <% $id_estudiante = estudiante.id%>
-                        <%if estudiante.estado == "Inscrito"%>
+                        <%if estudiante.estado != "Aspirante" %>
                         <% @documentos = Documento.all%>
                         <% @documento = Documento.new %>
 
@@ -170,13 +181,15 @@
                             <div class="form-group">      
                               <%= f.label :tipo_documento, class: "control-label " %>
                               <div class="">
-                              <%= select_tag "Tipo Documento", options_for_select([["Boletin", "Boletin"],["Documento de identidad", "Documento de identidad"],["Constancia EPS", "Constancia EPS"], ["Foto tamaño 3x4", "Foto tamaño 3x4"]]), class: "form-control" %>
+                              <%= f.select :tipo_documento,options_for_select([["Boletin", "Boletin"],["Documento de identidad", "Documento de identidad"],["Constancia EPS", "Constancia EPS"], ["Foto tamaño 3x4", "Foto tamaño 3x4"]]), class: "form-control" %>
                               
                               </div>
                               <div class="">
                                 <%= f.file_field :adjunto %>
                                 </div>
                             </div>
+
+                            <%= f.hidden_field :estudiante_id, value: estudiante.id%>
                              
                             <div class="col-xs-3 col-xs-9">
                               <%= f.submit "Guardar", class: "btn btn-primary"%>
@@ -219,6 +232,7 @@
                                 <div class="field">
                                   <%= f.hidden_field :valor, value: "10000"%>
                                 </div>
+                                <%= f.hidden_field :estudiante_id, value: estudiante.id%>
                                 <div class="actions">
                                   <%= f.submit "Generar Volante", class: "btn btn-primary"%>
                                 </div> 
@@ -245,15 +259,18 @@
                                       </div>
                                     <% end %> 
 
+                                    <div class="form-group">
+                                      <label class="col-sm-2 control-label">Adjunto</label>
+                                      <div class="col-sm-10">
+                                        <%= f.file_field :soporte %>
+                                      </div>
+                                    </div>
+
                                    <div class="field">
                                         <%= f.hidden_field :id, value: volante.id%>
                                     </div>
                                     
-                                    <div class="field">
-                                        <%= f.label :soporte, "Adjunto" %>                       
-                                        <%= f.file_field "Examinar" %>
-                                        
-                                    </div>
+                                   
                                     <div class="col-xs-12">
                                       <%= f.submit :Aceptar,  class: "btn btn-primary"%>
                                     </div></br>     
@@ -266,10 +283,11 @@
 
                         <h3>Volante de Matricula</h3>
                         <hr>
-                        <% @lista_volante = Volante.all %>
+                        <% @volante = Volante.new %>
+                        <% @lista_volantes = Volante.all %>
 
                           <% if estudiante.estado == "Aprobado" %>
-                            <%= form_for(@volante) do |f| %>
+                           <%= form_for @volante,:html => {:class => "form-horizontal"} do |f| %>
                               <% if @volante.errors.any? %>
                                 <div id="error_explanation">
                                   <h2><%= pluralize(@volante.errors.count, "error") %> prohibited this volante from being saved:</h2>
@@ -288,6 +306,7 @@
                                 <div class="field">
                                   <%= f.hidden_field :valor, value: "180000"%>
                                 </div>
+                                <%= f.hidden_field :estudiante_id, value: estudiante.id%>
                                 <div class="actions">
                                   <%= f.submit "Generar Volante", class: "btn btn-primary"%>
                                 </div> 
@@ -295,7 +314,7 @@
 
                           <% else %>
 
-                             <% @lista_volante.each do |volante| %>
+                             <% @lista_volantes.each do |volante| %>
                                 <% if estudiante.id == volante.estudiante.id && volante.concepto=="PAGO MATRICULA"%>
                                    <div class="col-xs-9">
                                     <%= link_to 'Ver Volante', volante_path(volante.id), class: "btn btn-primary"%>                      
@@ -317,13 +336,15 @@
                                    <div class="field">
                                         <%= f.hidden_field :id, value: volante.id%>
                                     </div>
-                                    
-                                    <div class="field">
-                                        <%= f.label :soporte, "Adjunto" %>
-                                        
-                                        <%= f.file_field "Examinar" %>
-                                        
+
+                                     <div class="form-group">
+                                      <label class="col-sm-2 control-label">Adjunto</label>
+                                      <div class="col-sm-10">
+                                        <%= f.file_field :soporte %>
+                                      </div>
                                     </div>
+                                    
+                                   
                                     <div class="col-xs-12">
                                       <%= f.submit :Aceptar,  class: "btn btn-primary"%>
                                     </div></br>
@@ -383,7 +404,7 @@
 
 
 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 logo-wrapper">
-   <img src="assets/img/ingresoe.png" alt="" />
+   
 </div>
 </div>
 
