@@ -20,6 +20,7 @@ gem "therubyracer"
 
 
 gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin-translate'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
