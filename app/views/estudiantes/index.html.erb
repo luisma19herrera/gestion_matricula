@@ -156,7 +156,7 @@
                         <h3>Documentos del Alumno</h3>
                         <hr>
                         <% $id_estudiante = estudiante.id%>
-                        <%if estudiante.estado != "Aspirante" %>
+                        <%if estudiante.estado != "Aspirante" && estudiante.estado != "No Admitido"%>
                         <% @documentos = Documento.all%>
                         <% @documento = Documento.new %>
 
@@ -286,7 +286,7 @@
                         <% @volante = Volante.new %>
                         <% @lista_volantes = Volante.all %>
 
-                          <% if estudiante.estado == "Aprobado" %>
+                          <% if estudiante.estado == "Admitido" %>
                            <%= form_for @volante,:html => {:class => "form-horizontal"} do |f| %>
                               <% if @volante.errors.any? %>
                                 <div id="error_explanation">

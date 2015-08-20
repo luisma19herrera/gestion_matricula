@@ -15,4 +15,6 @@ permit_params :fecha, :hora_inicio, :hora_fin, :tipo_tramite
 # end
 
 
+
+
 end

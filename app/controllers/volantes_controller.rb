@@ -47,7 +47,7 @@ class VolantesController < ApplicationController
       });
     else
       @estudiante.update_attributes({
-         :estado => "Pre Matriculado"
+         :estado => "Matricula en Proceso"
          
       });
     end
@@ -81,7 +81,7 @@ class VolantesController < ApplicationController
          
       });
       else
-        if @volante.concepto == "PAGO MATRICULA" && @volante.estudiante.estado == "Matriculado"
+        if @volante.concepto == "PAGO MATRICULA" && @volante.estudiante.estado == "Matricula en Proceso"
           @estudiante.update_attributes({
              :estado => "Pendiente por firma",   
              :f_matricula  => fecha_hora
